@@ -12,9 +12,10 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     //Call api
-    this.api.getProducts().subscribe(res => {
+    this.api.getProducts().subscribe((res) => {
       this.productList = res;
-    })
+
+    });
   }
 
 }
