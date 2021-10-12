@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     //add total cart product number in bandge
-    this.cartService.getProduct().subscribe((res) => {
+    this.cartService.getProducts().subscribe((res) => {
       this.totalItem = res.length;
     })
   }

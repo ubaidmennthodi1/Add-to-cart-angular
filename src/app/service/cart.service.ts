@@ -9,7 +9,7 @@ export class CartService {
   public productList = new BehaviorSubject<any>([]);
   constructor() { }
   //Geter
-  getProduct() {
+  getProducts() {
     return this.productList.asObservable();
   }
   //Seter
@@ -24,16 +24,17 @@ export class CartService {
     // console.log(this.cartItemList);
 
   }
-  getTotalPrice() {
+  getTotalPrice(): number {
     let grandTotal = 0;
     this.cartItemList.map((a: any) => {
       grandTotal += a.total;
     });
+    return grandTotal;
   }
   removeCartItem(product: any) {
     this.cartItemList.map((a: any, index: any) => {
       if (product.id === a.id) {
-        this.cartItemList.splice(index, 1);
+        this.cartItemList.splice(index,1);
       }
     });
   }
