@@ -47,7 +47,7 @@
         <img src="{{ item.image }}" alt="" />
         <h5 class="text-overflow">{{ item.title }}</h5>
         <p class="text-overflow">{{ item.description }}</p>
-        <p><strong>Price:</strong></p>
+        <p><strong>Price: {{item.price}}</strong></p>
         <button class="btn btn-primary" (click)="addToCart(item)">Add to cart</button>
       </div>
     </ng-container>

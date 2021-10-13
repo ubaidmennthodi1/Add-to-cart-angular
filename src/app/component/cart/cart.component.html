@@ -1,4 +1,4 @@
-<ng-container>
+<ng-container *ngIf="product.length != 0">
   <div class="container">
     <div class="card-table">
       <div class="cart-product">
@@ -16,14 +16,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of product; let i=index">
-              <td>{{i+1}}</td>
-              <td>{{item.title}}</td>
-              <td><img style="width: 120px;" src="{{item.image}}" alt=""></td>
-              <td style="width: 25%">{{item.description}}</td>
-              <td style="width: 12%">{{item.price}}</td>
-              <td style="width: 12%">{{item.quantity}}</td>
-              <td style="width: 12%">{{item.total}}</td>
+            <tr *ngFor="let item of product; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.title }}</td>
+              <td>
+                <img style="width: 120px;" src="{{ item.image }}" alt="" />
+              </td>
+              <td style="width: 25%">{{ item.description }}</td>
+              <td style="width: 12%">{{ item.price }}</td>
+              <td style="width: 12%">{{ item.quantity }}</td>
+              <td style="width: 12%">{{ item.total }}</td>
               <td>
                 <button class="btn btn-danger" (click)="removeItem(item)">
                   <i class="fas fa-trash-alt"></i>
@@ -32,10 +34,20 @@
             </tr>
             <tr>
               <td colspan="4"></td>
-              <td><button class="btn btn-danger">Empty Cart</button></td>
-              <td><button class="btn btn-primary">Shop More</button></td>
+              <td>
+                <button (click)="emptyCart()" class="btn btn-danger">
+                  Empty Cart
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-primary" routerLink="/products">
+                  Shop More
+                </button>
+              </td>
               <td><button class="btn btn-success">Checkout</button></td>
-              <td><strong>Grand Total : </strong></td>
+              <td>
+                <strong>Grand Total: ${{ grandTotal }} </strong>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -45,7 +57,7 @@
 </ng-container>
 
 <!-- if no data in cart -->
-<ng-container *ngIf="false">
+<ng-container *ngIf="product.length == 0">
   <div class="container">
     <div class="card">
       <h5 class="card-title">My Cart</h5>
@@ -53,10 +65,11 @@
     <div class="center">
       <img
         src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
-        alt="" />
+        alt=""
+      />
       <h4>Your cart is empty!</h4>
       <h6>Add item to it now</h6>
-      <button class="btn btn-primary">Shop Now</button>
+      <button class="btn btn-primary" routerLink="/products">Shop Now</button>
     </div>
   </div>
 </ng-container>
